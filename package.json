@@ -1,5 +1,5 @@
 {
-  "name": "ebay-scraper-frontend",
+  "name": "chaamo-scrape-web-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite gh-pages"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.1",
@@ -33,6 +34,7 @@
     "tw-animate-css": "^1.3.4",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
-    "vite": "^7.0.0"
+    "vite": "^7.0.0",
+    "vite-plugin-gh-pages": "^1.0.1"
   }
 }
