@@ -24,7 +24,7 @@ jobs:
     - name: Build Vite app
       run: npm run build
 
-    - name: Deploy to deploy branch
+    - name: Deploy to deployment branch
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
