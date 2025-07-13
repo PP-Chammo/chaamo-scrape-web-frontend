@@ -70,7 +70,7 @@ export default function App() {
     setIsScraping(true);
     setLoadingText("Fetching card data from resources...");
     try {
-      const response = await apiGet('/get_cards', {
+      const response = await apiGet('/scrape_cards', {
         query: {
             query: title,
             region: 'uk',
