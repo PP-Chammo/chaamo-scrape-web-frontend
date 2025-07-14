@@ -46,7 +46,7 @@ export default function App() {
     hint: null,
   });
 
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const debouncedSearchTerm = useDebounce(searchTerm, 800);
 
   // Focus search input when no suggestions are found
   useEffect(() => {
