@@ -2,6 +2,7 @@ import React from "react";
 import { Loader2, Database, Search, ExternalLink } from "lucide-react";
 
 interface SuggestionsDropdownProps {
+  searchTerm: string;
   suggestions: { id: string; title: string; image_url?: string }[];
   onSuggestionClick: (title: string) => void;
   onManualEbaySearch?: () => void;
@@ -10,6 +11,7 @@ interface SuggestionsDropdownProps {
 }
 
 const SuggestionsDropdown: React.FC<SuggestionsDropdownProps> = ({
+  searchTerm,
   suggestions,
   onSuggestionClick,
   onManualEbaySearch,
@@ -63,9 +65,21 @@ const SuggestionsDropdown: React.FC<SuggestionsDropdownProps> = ({
   return (
     <div className="absolute overflow-y-auto max-h-[600px] top-full left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-lg z-10 shadow-lg">
       <div className="p-3 border-b border-gray-700 bg-gray-800/50">
-        <div className="flex items-center gap-2 text-sm text-gray-400">
-          <Database className="w-4 h-4" />
-          <span>Database results ({suggestions.length})</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm text-gray-400">
+            <Database className="w-4 h-4" />
+            <span>Database results ({suggestions.length})</span>
+          </div>
+          {onManualEbaySearch && (
+            <button
+              onClick={onManualEbaySearch}
+              className="flex items-center gap-1 px-2 py-1 text-xs bg-teal-600 hover:bg-teal-700 text-white rounded transition-colors duration-200 cursor-pointer"
+              title="Re-scrape and update latest data from eBay"
+            >
+              <ExternalLink className="w-3 h-3" />
+              <span>Trigger Re-Scrape "{searchTerm}"</span>
+            </button>
+          )}
         </div>
       </div>
       <ul>

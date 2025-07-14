@@ -252,6 +252,7 @@ export default function App() {
           />
           {!searchState.selectedCardGroup && (
             <SuggestionsDropdown
+              searchTerm={searchTerm}
               suggestions={searchState.suggestions}
               onSuggestionClick={handleSuggestionClick}
               onManualEbaySearch={handleManualEbaySearch}
