@@ -7,6 +7,8 @@ interface ApiGetOptions {
   query?: Record<string, string | number | boolean | undefined | null>;
 }
 
+const bckndurl = import.meta.env.VITE_BACKEND_URL ?? 'https://humble-couscous-g4p5jrv95pj6cw569-8000.app.github.dev/api/v1';
+
 export function useApi() {
   const apiGet = useCallback(
     async (
@@ -14,7 +16,7 @@ export function useApi() {
       options: ApiGetOptions = {}
     ) => {
       const { headers, query } = options;
-      let url = `https://humble-couscous-g4p5jrv95pj6cw569-8000.app.github.dev/api/v1${endpoint}`;
+      let url = `${bckndurl}${endpoint}`;
       if (query && Object.keys(query).length > 0) {
         const params = new URLSearchParams();
         Object.entries(query).forEach(([key, value]) => {
@@ -24,8 +26,6 @@ export function useApi() {
         });
         url += `?${params.toString()}`;
       }
-
-      console.log('Fetching from:', url);
 
       const config: AxiosRequestConfig = {};
       if (headers) {
